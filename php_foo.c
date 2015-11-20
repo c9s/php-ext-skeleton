@@ -11,29 +11,30 @@ static const zend_function_entry foo_functions[] = {
 
 zend_module_entry foo_module_entry = {
   STANDARD_MODULE_HEADER,
-  "Foo", // your extension name
-  foo_functions, // where you define your functions
-  PHP_MINIT(foo),
-  PHP_MSHUTDOWN(foo),
-  NULL, // PHP_RINIT(foo)
-  NULL, // PHP_RSHUTDOWN(foo)
-  PHP_MINFO(foo),
+  "Foo",                       // your extension name
+  foo_functions,               // where you define your functions
+  NULL, // PHP_MINIT(foo),     // for module initialization
+  NULL, // PHP_MSHUTDOWN(foo), // for module shutdown process
+  NULL, // PHP_RINIT(foo)      // for request initialization
+  NULL, // PHP_RSHUTDOWN(foo)  // for reqeust shutdown process
+  PHP_MINFO(foo),              // for providing module information
   "0.1",
   STANDARD_MODULE_PROPERTIES
 };
 
+// Remove the comment if you want to initiazlie something (class entry, resource entry, constants ... etc)
+/*
 PHP_MINIT_FUNCTION(foo) {
   return SUCCESS;
 }
-
 PHP_MSHUTDOWN_FUNCTION(foo) {
   return SUCCESS;
 }
+*/
 
-PHP_MINFO_FUNCTION(foo) {
-}
+PHP_MINFO_FUNCTION(foo) {}
 
+// Your functions here...
 PHP_FUNCTION(foo_hello) {
   RETURN_TRUE;
 }
-
